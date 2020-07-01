@@ -7,13 +7,10 @@ ARG INSTALL_SCRIPT=https://raw.githubusercontent.com/fithwum/minecraft/master/fi
 # Install java8 & dependencies.
 RUN apt-get update && apt-get -y install libstdc++ software-properties-common \
 	&& apt-get install -y openjdk-8-jdk \
-	&& apt-get clean && rm -rf /var/lib/apt/lists/* \
-
-# Fix certificate issues
-RUN apt-get update && \
-    apt-get install ca-certificates-java && \
-    apt-get clean && \
-    update-ca-certificates -f;
+	&& apt-get clean && rm -rf /var/lib/apt/lists/*
+	&& apt-get install ca-certificates-java \
+	&& apt-get clean \
+	&& update-ca-certificates -f;
 
 # folder creation.
 RUN mkdir -p /MCserver /MCtemp \
