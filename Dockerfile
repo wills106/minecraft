@@ -4,9 +4,9 @@ MAINTAINER fithwum
 # URL's for files
 ARG INSTALL_SCRIPT=https://raw.githubusercontent.com/fithwum/minecraft/master/files/Install_Script.sh
 
-# Install java8 & dependencies.
+# Install OpenJDK-11 & dependencies.
 RUN apt-get update && apt-get -y install libstdc++ software-properties-common \
-	&& apt-get install -y openjdk-8-jdk ant \
+	&& apt-get install -y openjdk-11-jre-headless \
 	&& apt-get clean && rm -rf /var/lib/apt/lists/* \
 
 # Fix certificate issues
