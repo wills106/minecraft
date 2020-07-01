@@ -5,7 +5,7 @@ MAINTAINER fithwum
 ARG INSTALL_SCRIPT=https://raw.githubusercontent.com/fithwum/minecraft/master/files/Install_Script.sh
 
 # Install java8 & dependencies.
-RUN apt-get update && apt-get -y install libstdc++ software-properties-common \
+RUN apt-get update && apt-get install libstdc++ software-properties-common \
 	&& apt-get install -y openjdk-8-jdk \
 	&& apt-get clean && rm -rf /var/lib/apt/lists/*
 	&& apt-get install ca-certificates-java \
