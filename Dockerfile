@@ -7,6 +7,8 @@ ARG INSTALL_SCRIPT=https://raw.githubusercontent.com/fithwum/minecraft/master/fi
 # Install dependencies and folder creation
 RUN apt-get update && apt-get -y install libstdc++ software-properties-common \
 	&& apt-get -y install oracle-java11-installer \
+	&& echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections \
+	&& echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections \
 	&& apt-get clean && rm -rf /var/lib/apt/lists/* \
 	&& mkdir -p /MCserver /MCtemp \
 	&& chmod 777 -R /MCserver /MCtemp \
