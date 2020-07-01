@@ -13,7 +13,7 @@
   <Category>GameServers:</Category>
   <WebUI/>
   <TemplateURL>https://github.com/fithwum/files-for-dockers/templates/minecraft_server_unraid.xml</TemplateURL>
-  <Icon>https://raw.githubusercontent.com/fithwum/files-for-dockers/master/icons/Ts3Icon.png</Icon>
+  <Icon>https://raw.githubusercontent.com/fithwum/files-for-dockers/master/icons/Minecraft.png</Icon>
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>
