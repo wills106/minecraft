@@ -5,13 +5,9 @@ MAINTAINER fithwum
 ARG INSTALL_SCRIPT=https://raw.githubusercontent.com/fithwum/minecraft/master/files/Install_Script.sh
 
 # Install dependencies and folder creation
-RUN apt-get update && apt-get install libstdc++ software-properties-common \
-	&& add-apt-repository -y ppa:webupd8team/java \
-	&& echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections \
-	&& echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections \
-	&& apt-get update && apt-get -y install oracle-java8-installer \
-	&& apt-get clean \
-	&& rm -rf /var/lib/apt/lists/* \
+RUN apt-get update && apt-get install libstdc++ \
+	&& apt-get -y install oracle-java8-installer \
+	&& apt-get clean && rm -rf /var/lib/apt/lists/* \
 	&& mkdir -p /MCserver /MCtemp \
 	&& chmod 777 -R /MCserver /MCtemp \
 	&& chown 99:100 -R /MCserver /MCtemp
