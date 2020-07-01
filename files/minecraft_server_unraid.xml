@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>Minecraft</Name>
+  <Repository>fithwum/minecraft</Repository>
+  <Registry>https://hub.docker.com/r/fithwum/minecraft/</Registry>
+  <Network>host</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support></Support>
+  <Project>https://www.minecraft.net/en-us/</Project>
+  <Overview>Test.</Overview>
+  <Category>GameServers:</Category>
+  <WebUI/>
+  <TemplateURL>https://github.com/fithwum/files-for-dockers/templates/minecraft_server_unraid.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/fithwum/files-for-dockers/master/icons/Ts3Icon.png</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled/>
+  <DonateText>Buy me a coffee if you like.</DonateText>
+  <DonateLink>https://checkout.square.site/pay/340d93c602a042b8a223a2f7c184a6a2</DonateLink>
+  <Description>Test.</Description>
+  <Beta>False</Beta>
+  <Date>2020-07-01</Date>
+  <Changes>[font size=4][center]minecraft-debian[/center][/font]
+[font size=3][b](2020-07-01)[/b][/font]
+&#x00a0;&#x00a0;- First Test.
+  </Changes>
+  <Networking>
+    <Mode>host</Mode>
+    <Publish>
+      <Port>
+        <HostPort>25565</HostPort>
+        <ContainerPort>25565</ContainerPort>
+        <Protocol>udp</Protocol>
+      </Port>
+      <Port>
+        <HostPort>25565</HostPort>
+        <ContainerPort>25565</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+    </Publish>
+  </Networking>
+  <Data>
+    <Volume>
+      <HostDir>/mnt/user/appdata/minecraft-server</HostDir>
+      <ContainerDir>/MCserver</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+  </Data>
+  <Environment>
+    <Variable>
+      <Value>99</Value>
+      <Name>PUID</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>100</Value>
+      <Name>PGID</Name>
+      <Mode/>
+    </Variable>
+  </Environment>
+  <Labels/>
+  <Config Name="Host Port 1" Target="25565" Default="25565" Mode="udp" Description="Container Port: 25565" Type="Port" Display="always" Required="true" Mask="false">25565</Config>
+  <Config Name="Host Port 2" Target="25565" Default="25565" Mode="tcp" Description="Container Port: 25565" Type="Port" Display="always" Required="true" Mask="false">25565</Config>
+  <Config Name="Key 2" Target="PUID" Default="99" Mode="" Description="Container Variable: PUID" Type="Variable" Display="always" Required="false" Mask="false">99</Config>
+  <Config Name="Key 3" Target="PGID" Default="100" Mode="" Description="Container Variable: PGID" Type="Variable" Display="always" Required="false" Mask="false">100</Config>
+  <Config Name="AppData Config Path" Target="/MCserver" Default="/mnt/user/appdata/minecraft-server" Mode="rw" Description="Container Path: /MCserver" Type="Path" Display="advanced-hide" Required="true" Mask="false">/mnt/user/appdata/minecraft-server</Config>
+</Container>
