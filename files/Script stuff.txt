@@ -4,12 +4,12 @@
 
 
 # Check for EULA
-if [ ! -f MCserver/eula.txt ]; then
+if [ ! -f /MCserver/eula.txt ]; then
 	:
 else
 	if [ "${ACCEPT_EULA}" == "false" ]; then
-		if grep -rq 'eula=true' MCserver/eula.txt; then
-			sed -i '/eula=true/c\eula=false' MCserver/eula.txt
+		if grep -rq 'eula=true' /MCserver/eula.txt; then
+			sed -i '/eula=true/c\eula=false' /MCserver/eula.txt
 		fi
 			echo " "
 			echo "WARNING ! EULA not accepted, you must accept the EULA"
@@ -18,14 +18,14 @@ else
     fi
 fi
 
-if [ ! -f MCserver/eula.txt ]; then
+if [ ! -f /MCserver/eula.txt ]; then
 	echo " "
 	echo "WARNING ! EULA not found please stand by..."
 	sleep 5
 fi
 if [ "${ACCEPT_EULA}" == "true" ]; then
-	if grep -rq 'eula=false' MCserver/eula.txt; then
-		sed -i '/eula=false/c\eula=true' MCserver/eula.txt
+	if grep -rq 'eula=false' /MCserver/eula.txt; then
+		sed -i '/eula=false/c\eula=true' /MCserver/eula.txt
 		echo " "
 		echo "INFO ! EULA accepted, server restarting, please wait..."
 		sleep 1
