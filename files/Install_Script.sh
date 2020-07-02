@@ -10,14 +10,14 @@ CHANGELOG=/MCserver/run_${MC_VERSION}.sh
 
 # Main install (debian).
 
-# Looking for run.sh
-if [ -e /MCserver/run.sh ]
+# Looking for run_${MC_VERSION}.sh
+if [ -e /MCserver/run_${MC_VERSION}.sh ]
 	then
 		echo " "
-		echo "INFO ! run.sh found ... will not download."
+		echo "INFO ! run_${MC_VERSION}.sh found ... will not download."
 	else
 		echo " "
-		echo "WARNING ! run.sh not found ... will download new copy."
+		echo "WARNING ! run_${MC_VERSION}.sh not found ... will download new copy."
 		wget --no-cache --progress=bar:force:noscroll https://raw.githubusercontent.com/fithwum/minecraft/master/files/run.sh -O /MCserver/run_${MC_VERSION}.sh
 fi
 
@@ -31,7 +31,7 @@ if [ -e "${CHANGELOG}" ]
 		echo "WARNING ! minecraft server not found or is outdated downloading new copy."
 			echo " "
 			echo "INFO ! Cleaning old files."
-			rm -f /MCserver/minecraft_server.jar
+			rm -f /MCserver/minecraft_server.jar /MCserver/run_${MC_VERSION}.sh
 			wget --no-cache --progress=bar:force:noscroll https://launcher.mojang.com/v1/objects/a412fd69db1f81db3f511c1463fd304675244077/server.jar -O /MCserver/minecraft_server.jar
 			sleep 1
 fi
@@ -79,12 +79,12 @@ sleep 1
 # Set permissions.
 chown 99:100 -R /MCserver
 chmod 777 -R /MCserver
-chmod +x /MCserver/run.sh
-chmod +x /MCserver/minecraft_server_${MC_VERSION}.jar
+chmod +x /MCserver/run_${MC_VERSION}.sh
+chmod +x /MCserver/minecraft_server.jar
 
 # Run teamspeak server.
 echo " "
 echo "INFO ! Starting Minecraft server ${MC_VERSION}"
-exec /MCserver/run.sh
+exec /MCserver/run_${MC_VERSION}.sh
 
 exit
