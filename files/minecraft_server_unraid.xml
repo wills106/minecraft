@@ -9,7 +9,7 @@
   <Privileged>false</Privileged>
   <Support></Support>
   <Project>https://www.minecraft.net/en-us/</Project>
-  <Overview>Test.</Overview>
+  <Overview>This docker is for running Minecraft vanilla server version 1.16.1 but if you want to run a modded server you can just do not delete the files that are in the folder.</Overview>
   <Category>GameServers:</Category>
   <WebUI/>
   <TemplateURL>https://github.com/fithwum/files-for-dockers/templates/minecraft_server_unraid.xml</TemplateURL>
@@ -20,7 +20,7 @@
   <DateInstalled/>
   <DonateText>Buy me a coffee if you like.</DonateText>
   <DonateLink>https://checkout.square.site/pay/340d93c602a042b8a223a2f7c184a6a2</DonateLink>
-  <Description>Test.</Description>
+  <Description>This docker is for running Minecraft vanilla server version 1.16.1 but if you want to run a modded server you can just do not delete the files that are in the folder.</Description>
   <Beta>False</Beta>
   <Date>2020-07-01</Date>
   <Changes>[font size=4][center]minecraft-debian[/center][/font]
