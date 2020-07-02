@@ -4,5 +4,3 @@
 
 cd /MCserver
 java -Xmx4G -Xms1024M -jar ./MCserver.jar nogui
-
-sleep infinity
