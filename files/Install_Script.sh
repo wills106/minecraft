@@ -92,6 +92,6 @@ sleep 1
 # Run teamspeak server.
 echo " "
 echo "INFO ! Starting Minecraft server ${MC_VERSION}"
-exec /MCserver/run_${MC_VERSION}.sh
+exec /MCserver/run_${MC_VERSION}.sh --dataPath=/MCserver
 
 exit
