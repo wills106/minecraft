@@ -13,8 +13,6 @@ RUN apt-get -y update \
 	&& apt-get clean && rm -rf /var/lib/apt/lists/*\
 	&& update-ca-certificates -f;
 
-WORKDIR /MCserver
-
 # folder creation.
 RUN mkdir -p /MCserver /MCtemp \
 	&& chmod 777 -R /MCserver /MCtemp \
