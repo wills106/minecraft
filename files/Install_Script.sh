@@ -32,7 +32,7 @@ if [ -e /MCserver/run.sh ]
 	else
 		echo " "
 		echo "WARNING ! run.sh not found ... will download new copy."
-		wget --no-cache --progress=bar:force:noscroll https://raw.githubusercontent.com/fithwum/minecraft/master/scripts/run.sh -O /MCserver/run.sh
+		wget --no-cache --progress=bar:force:noscroll https://raw.githubusercontent.com/fithwum/minecraft/master/files/run.sh -O /MCserver/run.sh
 fi
 
 # Check for EULA
