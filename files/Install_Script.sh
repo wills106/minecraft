@@ -6,6 +6,7 @@
 echo " "
 echo "INFO ! Checking for latest Minecraft server version."
 MC_VERSION=1.16.1
+ACCEPT_EULA=false
 CHANGELOG=/MCserver/run_${MC_VERSION}.sh
 
 # Main install (debian).
@@ -22,8 +23,9 @@ if [ -e "${CHANGELOG}" ]
 			echo "INFO ! Cleaning old files."
 			rm -f /MCserver/minecraft_server.jar /MCserver/run_${MC_VERSION}.sh
 			wget --no-cache --progress=bar:force:noscroll https://launcher.mojang.com/v1/objects/a412fd69db1f81db3f511c1463fd304675244077/server.jar -O /MCserver/MCserver.jar
-			sleep 1
 fi
+
+sleep 1
 
 # Looking for run_${MC_VERSION}.sh
 if [ -e /MCserver/run_${MC_VERSION}.sh ]
@@ -38,11 +40,55 @@ fi
 
 sleep 1
 
+# Check for EULA
+if [ ! -f /MCserver/eula.txt ]; then
+	:
+else
+	if [ "${ACCEPT_EULA}" == "false" ]; then
+		if grep -rq 'eula=true' /MCserver/eula.txt; then
+			sed -i '/eula=true/c\eula=false' /MCserver/eula.txt
+		fi
+			echo " "
+			echo "WARNING ! EULA not accepted, you must accept the EULA"
+			echo "			to start the Server, putting server in sleep mode"
+		sleep infinity
+    fi
+fi
+
+sleep 1
+
+if [ ! -f /MCserver/eula.txt ]; then
+	echo " "
+	echo "WARNING ! EULA not found please stand by..."
+	sleep 5
+fi
+if [ "${ACCEPT_EULA}" == "true" ]; then
+	if grep -rq 'eula=false' /MCserver/eula.txt; then
+		sed -i '/eula=false/c\eula=true' /MCserver/eula.txt
+		echo " "
+		echo "INFO ! EULA accepted, server restarting, please wait..."
+		sleep 1
+		exit 0
+	fi
+elif [ "${ACCEPT_EULA}" == "false" ]; then
+	echo " "
+	echo "WARNING ! EULA not accepted, you must accept the EULA"
+	echo "			to start the Server, putting server in sleep mode"
+	sleep infinity
+else
+	echo " "
+	echo "WARNING ! Something went wrong, please check EULA variable"
+fi
+
+sleep 1
+
 # Set permissions.
 chown 99:100 -R /MCserver
 chmod 777 -R /MCserver
 chmod +x /MCserver/run_${MC_VERSION}.sh
 chmod +x /MCserver/MCserver.jar
+
+sleep 1
 
 # Run teamspeak server.
 echo " "
