@@ -21,7 +21,7 @@ if [ -e "${CHANGELOG}" ]
 			echo " "
 			echo "INFO ! Cleaning old files."
 			rm -f /MCserver/minecraft_server.jar /MCserver/run_${MC_VERSION}.sh
-			wget --no-cache --progress=bar:force:noscroll https://launcher.mojang.com/v1/objects/a412fd69db1f81db3f511c1463fd304675244077/server.jar -O /MCserver/minecraft_server.jar
+			wget --no-cache --progress=bar:force:noscroll https://launcher.mojang.com/v1/objects/a412fd69db1f81db3f511c1463fd304675244077/server.jar -O /MCserver/MCserver.jar
 			sleep 1
 fi
 
@@ -42,7 +42,7 @@ sleep 1
 chown 99:100 -R /MCserver
 chmod 777 -R /MCserver
 chmod +x /MCserver/run_${MC_VERSION}.sh
-chmod +x /MCserver/minecraft_server.jar
+chmod +x /MCserver/MCserver.jar
 
 # Run teamspeak server.
 echo " "
