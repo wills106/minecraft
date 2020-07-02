@@ -20,7 +20,7 @@ if [ -e "${CHANGELOG}" ]
 			echo " "
 			echo "INFO ! Cleaning old files."
 			rm -f /MCserver/minecraft_server_*
-			wget --no-cache https://launcher.mojang.com/v1/objects/a412fd69db1f81db3f511c1463fd304675244077/server.jar -O /MCserver/minecraft_server_${MC_VERSION}.jar
+			wget --no-cache --progress=bar:force:noscroll https://launcher.mojang.com/v1/objects/a412fd69db1f81db3f511c1463fd304675244077/server.jar -O /MCserver/minecraft_server_${MC_VERSION}.jar
 			sleep 1
 fi
 
@@ -32,7 +32,7 @@ if [ -e /MCserver/run.sh ]
 	else
 		echo " "
 		echo "WARNING ! run.sh not found ... will download new copy."
-		wget --no-cache https://raw.githubusercontent.com/fithwum/minecraft/master/scripts/run.sh -O /MCserver/run.sh
+		wget --no-cache --progress=bar:force:noscroll https://raw.githubusercontent.com/fithwum/minecraft/master/scripts/run.sh -O /MCserver/run.sh
 fi
 
 # Check for EULA
