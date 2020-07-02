@@ -18,7 +18,7 @@ ADD "${INSTALL_SCRIPT}" /MCtemp
 RUN chmod +x /MCtemp/Install_Script.sh
 
 # directory where data is stored
-VOLUME /MCserver
+WORKDIR /MCserver
 
 # 25565 default.
 EXPOSE 25565/udp 25565/tcp
