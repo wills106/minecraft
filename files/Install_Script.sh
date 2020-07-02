@@ -5,7 +5,7 @@
 # Variables.
 echo " "
 echo "Checking for latest Minecraft server version."
-MC_VERSION=1.12.2
+MC_VERSION=1.16.1
 CHANGELOG=/MCserver/minecraft_server_${MC_VERSION}.jar
 
 # Main install (debian).
