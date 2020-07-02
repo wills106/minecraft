@@ -6,7 +6,6 @@
 echo " "
 echo "INFO ! Checking for latest Minecraft server version."
 MC_VERSION=1.16.1
-ACCEPT_EULA=false
 CHANGELOG=/MCserver/run_${MC_VERSION}.sh
 
 # Main install (debian).
