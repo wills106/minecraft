@@ -6,9 +6,21 @@
 echo " "
 echo "INFO ! Checking for latest Minecraft server version."
 MC_VERSION=1.16.1
-CHANGELOG=/MCserver/minecraft_server_${MC_VERSION}.jar
+CHANGELOG=/MCserver/run_${MC_VERSION}.sh
 
 # Main install (debian).
+
+# Looking for run.sh
+if [ -e /MCserver/run.sh ]
+	then
+		echo " "
+		echo "INFO ! run.sh found ... will not download."
+	else
+		echo " "
+		echo "WARNING ! run.sh not found ... will download new copy."
+		wget --no-cache --progress=bar:force:noscroll https://raw.githubusercontent.com/fithwum/minecraft/master/files/run.sh -O /MCserver/run_${MC_VERSION}.sh
+fi
+
 # Check for files in /MCserver and download/create if needed.
 if [ -e "${CHANGELOG}" ]
 	then
@@ -19,24 +31,12 @@ if [ -e "${CHANGELOG}" ]
 		echo "WARNING ! minecraft server not found or is outdated downloading new copy."
 			echo " "
 			echo "INFO ! Cleaning old files."
-			rm -f /MCserver/minecraft_server_*
-			wget --no-cache --progress=bar:force:noscroll https://launcher.mojang.com/v1/objects/a412fd69db1f81db3f511c1463fd304675244077/server.jar -O /MCserver/minecraft_server_${MC_VERSION}.jar
+			rm -f /MCserver/minecraft_server.jar
+			wget --no-cache --progress=bar:force:noscroll https://launcher.mojang.com/v1/objects/a412fd69db1f81db3f511c1463fd304675244077/server.jar -O /MCserver/minecraft_server.jar
 			sleep 1
 fi
 
-# Looking for run.sh
-if [ -e /MCserver/run.sh ]
-	then
-		echo " "
-		echo "INFO ! run.sh found ... will not download."
-	else
-		echo " "
-		echo "WARNING ! run.sh not found ... will download new copy."
-		wget --no-cache --progress=bar:force:noscroll https://raw.githubusercontent.com/fithwum/minecraft/master/files/run.sh -O /MCserver/run.sh
-fi
-
 # Check for EULA
-
 if [ ! -f MCserver/eula.txt ]; then
 	:
 else
