@@ -4,7 +4,7 @@
 
 # Variables.
 echo " "
-echo "Checking for latest Minecraft server version."
+echo "INFO ! Checking for latest Minecraft server version."
 MC_VERSION=1.16.1
 CHANGELOG=/MCserver/minecraft_server_${MC_VERSION}.jar
 
@@ -16,9 +16,9 @@ if [ -e "${CHANGELOG}" ]
 		echo "INFO ! minecraft server found starting server."
 	else
 		echo " "
-		echo "WARNING ! minecraft server not found/outdated downloading new copy."
+		echo "WARNING ! minecraft server not found or is outdated downloading new copy."
 			echo " "
-			echo "INFO ! Checking old files."
+			echo "INFO ! Cleaning old files."
 			rm -f /MCserver/minecraft_server_*
 			wget --no-cache https://launcher.mojang.com/v1/objects/a412fd69db1f81db3f511c1463fd304675244077/server.jar -O /MCserver/minecraft_server_${MC_VERSION}.jar
 			sleep 1
@@ -45,32 +45,33 @@ else
 			sed -i '/eula=true/c\eula=false' MCserver/eula.txt
 		fi
 			echo " "
-			echo "EULA not accepted, you must accept the EULA"
-			echo "to start the Server, putting server in sleep mode"
+			echo "WARNING ! EULA not accepted, you must accept the EULA"
+			echo "			to start the Server, putting server in sleep mode"
 		sleep infinity
     fi
 fi
 
 if [ ! -f MCserver/eula.txt ]; then
-	echo "EULA not found please stand by..."
-	sleep 30
+	echo " "
+	echo "WARNING ! EULA not found please stand by..."
+	sleep 5
 fi
 if [ "${ACCEPT_EULA}" == "true" ]; then
 	if grep -rq 'eula=false' MCserver/eula.txt; then
 		sed -i '/eula=false/c\eula=true' MCserver/eula.txt
 		echo " "
-		echo "EULA accepted, server restarting, please wait..."
+		echo "INFO ! EULA accepted, server restarting, please wait..."
 		sleep 1
 		exit 0
 	fi
 elif [ "${ACCEPT_EULA}" == "false" ]; then
 	echo " "
-	echo "EULA not accepted, you must accept the EULA"
-	echo "to start the Server, putting server in sleep mode"
+	echo "WARNING ! EULA not accepted, you must accept the EULA"
+	echo "			to start the Server, putting server in sleep mode"
 	sleep infinity
 else
 	echo " "
-	echo "Something went wrong, please check EULA variable"
+	echo "WARNING ! Something went wrong, please check EULA variable"
 fi
 
 sleep 1
