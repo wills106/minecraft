@@ -2,4 +2,4 @@
 # Copyright (c) 2018 fithwum
 # All rights reserved
 
-java -Xmx4G -Xms1024M -jar ./minecraft_server.jar nogui
+java -Xmx4G -Xms1024M -jar ./minecraft_server.jar -Dcom.mojang.eula.agree=true nogui
