@@ -8,11 +8,8 @@ echo "Checking for latest Minecraft server version."
 MC_VERSION=1.16.1
 CHANGELOG=/MCserver/minecraft_server_${MC_VERSION}.jar
 
-apt-get install -y openjdk-8-jdk ca-certificates-java
-update-ca-certificates -f;
-
 # Main install (debian).
-# Check for files in /ts3server and download/create if needed.
+# Check for files in /MCserver and download/create if needed.
 if [ -e "${CHANGELOG}" ]
 	then
 		echo "INFO ! minecraft server found starting server."
@@ -34,8 +31,8 @@ chown 99:100 -Rv /MCserver
 chmod 777 -Rv /MCserver
 chown 99:100 -Rv /MCserver/minecraft_server_${MC_VERSION}.jar
 chown 99:100 -Rv /MCserver/run.sh
-chmod +xv /MCserver/run.sh
-chmod +xv /MCserver/minecraft_server_${MC_VERSION}.jar
+chmod +x /MCserver/run.sh
+chmod +x /MCserver/minecraft_server_${MC_VERSION}.jar
 
 # Run teamspeak server.
 echo " "
