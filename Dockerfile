@@ -5,8 +5,7 @@ MAINTAINER fithwum
 ARG INSTALL_SCRIPT=https://raw.githubusercontent.com/fithwum/minecraft/master/files/Install_Script.sh
 
 # Install java8 & dependencies.
-RUN apt-get update && apt-get install libstdc++ \
-	&& apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # folder creation.
 RUN mkdir -p /MCserver /MCtemp \
