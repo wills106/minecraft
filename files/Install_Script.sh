@@ -7,7 +7,9 @@ echo " "
 echo "Checking for latest Minecraft server version."
 MC_VERSION=1.16.1
 CHANGELOG=/MCserver/minecraft_server_${MC_VERSION}.jar
-echo "Installed server version is:$MC_VERSION"
+
+apt-get install -y openjdk-8-jdk ca-certificates-java
+update-ca-certificates -f;
 
 # Main install (debian).
 # Check for files in /ts3server and download/create if needed.
