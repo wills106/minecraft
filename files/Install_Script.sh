@@ -24,6 +24,8 @@ if [ -e "${CHANGELOG}" ]
 			wget --no-cache https://raw.githubusercontent.com/fithwum/minecraft/master/files/run.sh -O /MCserver/run.sh
 			sleep 1
 fi
+
+# Looking for run.sh
 if [ -e /MCserver/run.sh ]
 	then
 		echo " "
@@ -31,14 +33,52 @@ if [ -e /MCserver/run.sh ]
 	else
 		echo " "
 		echo "WARNING ! run.sh not found ... will download new copy."
-			wget --no-cache https://raw.githubusercontent.com/fithwum/minecraft/master/scripts/run.sh -O /MCserver/run.sh
+		wget --no-cache https://raw.githubusercontent.com/fithwum/minecraft/master/scripts/run.sh -O /MCserver/run.sh
+fi
+
+# Check for EULA
+
+if [ ! -f MCserver/eula.txt ]; then
+	:
+else
+	if [ "${ACCEPT_EULA}" == "false" ]; then
+		if grep -rq 'eula=true' MCserver/eula.txt; then
+			sed -i '/eula=true/c\eula=false' MCserver/eula.txt
+		fi
+			echo " "
+			echo "EULA not accepted, you must accept the EULA"
+			echo "to start the Server, putting server in sleep mode"
+		sleep infinity
+    fi
+fi
+
+if [ ! -f MCserver/eula.txt ]; then
+	echo "EULA not found please stand by..."
+	sleep 30
+fi
+if [ "${ACCEPT_EULA}" == "true" ]; then
+	if grep -rq 'eula=false' MCserver/eula.txt; then
+		sed -i '/eula=false/c\eula=true' MCserver/eula.txt
+		echo " "
+		echo "EULA accepted, server restarting, please wait..."
+		sleep 1
+		exit 0
+	fi
+elif [ "${ACCEPT_EULA}" == "false" ]; then
+	echo " "
+	echo "EULA not accepted, you must accept the EULA"
+	echo "to start the Server, putting server in sleep mode"
+	sleep infinity
+else
+	echo " "
+	echo "Something went wrong, please check EULA variable"
 fi
 
 sleep 1
 
 # Set permissions.
-chown 99:100 -Rv /MCserver
-chmod 777 -Rv /MCserver
+chown 99:100 -R /MCserver
+chmod 777 -R /MCserver
 chmod +x /MCserver/run.sh
 chmod +x /MCserver/minecraft_server_${MC_VERSION}.jar
 
