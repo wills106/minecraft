@@ -29,8 +29,6 @@ sleep 1
 # Set permissions.
 chown 99:100 -Rv /MCserver
 chmod 777 -Rv /MCserver
-chown 99:100 -Rv /MCserver/minecraft_server_${MC_VERSION}.jar
-chown 99:100 -Rv /MCserver/run.sh
 chmod +x /MCserver/run.sh
 chmod +x /MCserver/minecraft_server_${MC_VERSION}.jar
 
