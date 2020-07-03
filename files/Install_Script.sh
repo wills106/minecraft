@@ -67,6 +67,7 @@ if [ "${ACCEPT_EULA}" == "true" ]; then
 		echo " "
 		echo "INFO ! EULA accepted, server restarting, please wait..."
 		sleep 1
+		exec /MCserver/run_${MC_VERSION}.sh --dataPath=/MCserver
 		exit 0
 	fi
 elif [ "${ACCEPT_EULA}" == "false" ]; then
