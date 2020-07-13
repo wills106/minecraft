@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (c) 2018 fithwum
+# Copyright (c) 2020 fithwum
 # All rights reserved
 
 cd /MCserver
