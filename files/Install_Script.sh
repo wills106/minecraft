@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (c) 2018 fithwum
+# Copyright (c) 2020 fithwum
 # All rights reserved
 
 # Variables.
@@ -51,6 +51,20 @@ else
 			echo "WARNING ! EULA not accepted, you must accept the EULA"
 			echo "			to start the Server, putting server in sleep mode"
 		sleep infinity
+    fi
+fi
+
+# Set Server WORLD-NAME
+if [ ! -f /MCserver/server.properties ]; then
+	:
+else
+	if [ "${WORLD_NAME}" == "world" ]; then
+		if grep -rq 'level-name=${WORLD_NAME}' /MCserver/server.properties; then
+			sed -i '/level-name=${WORLD_NAME}/c\level-name=${WORLD_NAME}' /MCserver/server.properties
+		fi
+			echo " "
+			echo "WARNING ! WORLD_NAME not set, you must set the WORLD_NAME"
+		sleep 5
     fi
 fi
 
