@@ -54,20 +54,6 @@ else
     fi
 fi
 
-# Set Server WORLD_NAME
-if [ ! -f /MCserver/server.properties ]; then
-	:
-else
-	if [ "${WORLD_NAME}" == "${WORLD_NAME}" ]; then
-		if grep -rq 'level-name=${WORLD_NAME}' /MCserver/server.properties; then
-			sed -i '/level-name=${WORLD_NAME}/c\level-name=${WORLD_NAME}' /MCserver/server.properties
-		fi
-			echo " "
-			echo "WARNING ! WORLD_NAME not set, you must set the WORLD_NAME"
-		sleep 5
-    fi
-fi
-
 sleep 1
 
 if [ ! -f /MCserver/eula.txt ]; then
