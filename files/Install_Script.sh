@@ -54,11 +54,11 @@ else
     fi
 fi
 
-# Set Server WORLD-NAME
+# Set Server WORLD_NAME
 if [ ! -f /MCserver/server.properties ]; then
 	:
 else
-	if [ "${WORLD_NAME}" == "world" ]; then
+	if [ "${WORLD_NAME}" == "${WORLD_NAME}" ]; then
 		if grep -rq 'level-name=${WORLD_NAME}' /MCserver/server.properties; then
 			sed -i '/level-name=${WORLD_NAME}/c\level-name=${WORLD_NAME}' /MCserver/server.properties
 		fi
