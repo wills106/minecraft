@@ -2,6 +2,7 @@ FROM fithwum/debian-base
 MAINTAINER fithwum
 
 ENV ACCEPT_EULA="false"
+ENV WORLD_NAME="world"
 ENV GAME_PORT=25565
 
 # URL's for files
