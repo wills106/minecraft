@@ -90,7 +90,7 @@ chmod +x /MCserver/MCserver.jar
 
 sleep 1
 
-# Run teamspeak server.
+# Run Minecraft server.
 echo " "
 echo "INFO ! Starting Minecraft server ${MC_VERSION}"
 exec /MCserver/run_${MC_VERSION}.sh --dataPath=/MCserver
