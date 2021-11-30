@@ -9,6 +9,10 @@ ARG INSTALL_SCRIPT=https://raw.githubusercontent.com/fithwum/minecraft/master/fi
 
 # Install java8 & dependencies.
 RUN apt-get -y update \
+	&& apt-get install -y software-properties-common \
+	&& wget -O- https://apt.corretto.aws/corretto.key | sudo apt-key add - \
+	&& add-apt-repository 'deb https://apt.corretto.aws stable main' \
+	&& apt-get update \
 	&& apt-get install -y java-17-amazon-corretto-jdk ca-certificates-java \
 	&& apt-get clean && rm -rf /var/lib/apt/lists/*\
 	&& update-ca-certificates -f;
