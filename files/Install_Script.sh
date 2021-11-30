@@ -5,7 +5,7 @@
 # Variables.
 echo " "
 echo "INFO ! Checking for latest Minecraft server version."
-MC_VERSION=1.16.4
+MC_VERSION=1.18.0
 CHANGELOG=/MCserver/run_${MC_VERSION}.sh
 
 # Main install (debian).
@@ -21,7 +21,7 @@ if [ -e "${CHANGELOG}" ]
 			echo " "
 			echo "INFO ! Cleaning old files."
 			rm -f /MCserver/minecraft_server.jar /MCserver/run_${MC_VERSION}.sh
-			wget --no-cache https://launcher.mojang.com/v1/objects/35139deedbd5182953cf1caa23835da59ca3d7cd/server.jar -O /MCserver/MCserver.jar
+			wget --no-cache https://launcher.mojang.com/v1/objects/3cf24a8694aca6267883b17d934efacc5e44440d/server.jar -O /MCserver/MCserver.jar
 fi
 
 sleep 1
