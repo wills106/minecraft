@@ -10,7 +10,7 @@ ARG INSTALL_SCRIPT=https://raw.githubusercontent.com/fithwum/minecraft/master/fi
 # Install java8 & dependencies.
 RUN apt-get -y update \
 	&& apt-get install -y software-properties-common \
-	&& apt-get install -y openjdk-17-jre ca-certificates-java \
+	&& apt-get install -y openjdk-17-jdk ca-certificates-java \
 	&& apt-get clean && rm -rf /var/lib/apt/lists/*\
 	&& update-ca-certificates -f;
 
