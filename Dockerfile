@@ -1,4 +1,4 @@
-FROM fithwum/debian-base:stretch
+FROM fithwum/debian-base:bullseye
 MAINTAINER fithwum
 
 ENV ACCEPT_EULA="false"
