@@ -2,8 +2,10 @@
 # Copyright (c) 2020 fithwum
 # All rights reserved
 
+MC_VERSION=1.18.2
+
 cd /MCserver
-JAR=./MCserver.jar
+JAR=./MCserver_${MC_VERSION}.jar
 
 while [ true ]; do
   java -Xmx4G -Xms1024M -Xmn1G -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -jar $JAR nogui
