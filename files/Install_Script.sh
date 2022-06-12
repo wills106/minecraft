@@ -20,9 +20,9 @@ if [ -e "${CHANGELOG}" ]
 		echo "WARNING ! Minecraft server not found or is outdated downloading new copy."
 			echo " "
 			echo "INFO ! Cleaning old files."
-			mkdir /MCserver/versions/${MC_VERSION_OLD}
-			mv /MCserver/MCserver_${MC_VERSION_OLD}.jar /MCserver/versions/${MC_VERSION_OLD}
-			mv /MCserver/run_${MC_VERSION_OLD}.sh /MCserver/versions/${MC_VERSION_OLD}
+			mkdir /MCserver/old-server-versions/${MC_VERSION_OLD}
+			mv /MCserver/MCserver_${MC_VERSION_OLD}.jar /MCserver/old-server-versions/${MC_VERSION_OLD}
+			mv /MCserver/run_${MC_VERSION_OLD}.sh /MCserver/old-server-versions/${MC_VERSION_OLD}
 			wget --no-cache https://launcher.mojang.com/v1/objects/c8f83c5655308435b3dcf03c06d9fe8740a77469/server.jar -O /MCserver/MCserver_${MC_VERSION}.jar
 fi
 
@@ -36,7 +36,7 @@ if [ -e /MCserver/run_${MC_VERSION}.sh ]
 	else
 		echo " "
 		echo "WARNING ! run_${MC_VERSION_OLD}.sh is out of date ... update will be downloaded."
-		mv /MCserver/run_${MC_VERSION_OLD}.sh /MCserver/versions/${MC_VERSION_OLD}
+		mv /MCserver/run_${MC_VERSION_OLD}.sh /MCserver/old-server-versions/${MC_VERSION_OLD}
 		wget --no-cache https://raw.githubusercontent.com/fithwum/minecraft/master/files/run.sh -O /MCserver/run_${MC_VERSION}.sh
 fi
 
