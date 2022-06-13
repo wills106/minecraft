@@ -10,7 +10,7 @@ MC_VERSION=1.18.2
 
 # Main install (Debian).
 
-# Check for files in /MCserver and download/create if needed.
+# Check for files in /MCserver and download if needed.
 if [ -e /MCserver/MCserver_${MC_VERSION}.jar ]
 	then
 		echo " "
