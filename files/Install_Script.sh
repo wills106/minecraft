@@ -4,6 +4,8 @@
 
 # Variables.
 echo " "
+echo "Hello-World"
+echo " "
 echo "INFO ! Checking for latest Minecraft server version."
 MC_VERSION_OLD=1.18.1
 MC_VERSION=1.18.2
