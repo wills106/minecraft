@@ -11,7 +11,7 @@ MC_VERSION=1.18.2
 # Main install (Debian).
 
 # Check for files in /MCserver and download/create if needed.
-if [ -e /MCserver/MCserver_${MC_VERSION} ]
+if [ -e /MCserver/MCserver_${MC_VERSION}.jar ]
 	then
 		echo " "
 		echo "INFO ! Minecraft server found starting server."
