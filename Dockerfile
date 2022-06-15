@@ -6,10 +6,12 @@ ENV GAME_PORT=25565
 # URL's for files
 ARG INSTALL_SCRIPT=https://raw.githubusercontent.com/fithwum/minecraft/master/files/Install_Script.sh
 
-# Install java-17 & dependencies.
+# Install java-17 & Dependencies.
 RUN apt-get -y update \
-	&& apt-get install -y software-properties-common openjdk-17-jdk ca-certificates-java \
-	&& apt-get clean && rm -rf /var/lib/apt/lists/*\
+	&& apt-get -y --fix-broken install \
+	&& apt-get install -y software-properties-common openjdk-17-jdk \
+	&& apt-get clean \
+	&& rm -rf /var/lib/apt/lists/* \
 	&& update-ca-certificates -f;
 
 # Folder creation.
