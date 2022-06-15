@@ -4,7 +4,7 @@
 
 # Variables.
 echo " "
-echo "INFO ! Checking for latest Minecraft server version."
+echo "INFO ! Checking for latest Minecraft Server version."
 MC_VERSION_OLD=1.18.1
 MC_VERSION=1.18.2
 
@@ -14,10 +14,10 @@ MC_VERSION=1.18.2
 if [ -e /MCserver/MCserver_${MC_VERSION}.jar ]
 	then
 		echo " "
-		echo "INFO ! Minecraft server found starting server."
+		echo "INFO ! Minecraft Server found starting now."
 	else
 		echo " "
-		echo "WARNING ! Minecraft server not found or is outdated downloading new copy."
+		echo "WARNING ! Minecraft Server not found or is outdated downloading now."
 			echo " "
 			echo "INFO ! Cleaning old files."
 			mkdir /MCserver/old-server-versions/${MC_VERSION_OLD}
@@ -32,10 +32,10 @@ sleep 1
 if [ -e /MCserver/run_${MC_VERSION}.sh ]
 	then
 		echo " "
-		echo "INFO ! run_${MC_VERSION}.sh found ... will use existing run file."
+		echo "INFO ! run_${MC_VERSION}.sh found ... will use existing file."
 	else
 		echo " "
-		echo "WARNING ! run_${MC_VERSION_OLD}.sh is out of date ... update will be downloaded."
+		echo "WARNING ! run_${MC_VERSION_OLD}.sh is out of date/Missing ... will download now."
 		mv /MCserver/run_${MC_VERSION_OLD}.sh /MCserver/old-server-versions/${MC_VERSION_OLD}
 		wget --no-cache https://raw.githubusercontent.com/fithwum/minecraft/master/files/run.sh -O /MCserver/run_${MC_VERSION}.sh
 fi
@@ -95,7 +95,7 @@ sleep 1
 
 # Run Minecraft server.
 echo " "
-echo "INFO ! Starting Minecraft server ${MC_VERSION}"
+echo "INFO ! Starting Minecraft Server ${MC_VERSION}"
 exec /MCserver/run_${MC_VERSION}.sh --dataPath=/MCserver
 
 exit
