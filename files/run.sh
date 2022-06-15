@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (c) 2020 fithwum
+# Copyright (c) 2022 fithwum
 # All rights reserved
 
 MC_VERSION=1.18.2

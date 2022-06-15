@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (c) 2020 fithwum
+# Copyright (c) 2022 fithwum
 # All rights reserved
 
 # Variables.
@@ -9,7 +9,6 @@ MC_VERSION_OLD=1.18.1
 MC_VERSION=1.18.2
 
 # Main install (Debian).
-
 # Check for files in /MCserver and download if needed.
 if [ -e /MCserver/MCserver_${MC_VERSION}.jar ]
 	then
