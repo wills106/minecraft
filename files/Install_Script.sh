@@ -13,10 +13,10 @@ MC_VERSION=1.18.2
 if [ -e /MCserver/MCserver_${MC_VERSION}.jar ]
 	then
 		echo " "
-		echo "INFO ! Minecraft Server found starting now."
+		echo "INFO ! MCserver_${MC_VERSION}.jar found starting now."
 	else
 		echo " "
-		echo "WARNING ! Minecraft Server not found or is outdated downloading now."
+		echo "WARNING ! MCserver_${MC_VERSION}.jar is out of date/missing ... will download now."
 			echo " "
 			echo "INFO ! Cleaning old files."
 			mkdir /MCserver/old-server-versions/${MC_VERSION_OLD}
@@ -34,7 +34,7 @@ if [ -e /MCserver/run_${MC_VERSION}.sh ]
 		echo "INFO ! run_${MC_VERSION}.sh found ... will use existing file."
 	else
 		echo " "
-		echo "WARNING ! run_${MC_VERSION_OLD}.sh is out of date/Missing ... will download now."
+		echo "WARNING ! run_${MC_VERSION_OLD}.sh is out of date/missing ... will download now."
 		mv /MCserver/run_${MC_VERSION_OLD}.sh /MCserver/old-server-versions/${MC_VERSION_OLD}
 		wget --no-cache https://raw.githubusercontent.com/fithwum/minecraft/master/files/run.sh -O /MCserver/run_${MC_VERSION}.sh
 fi
