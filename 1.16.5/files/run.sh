@@ -2,7 +2,7 @@
 # Copyright (c) 2022 fithwum
 # All rights reserved
 
-MC_VERSION=1.18.2
+MC_VERSION=1.16.5
 
 cd /MCserver
 JAR=./MCserver_${MC_VERSION}.jar
