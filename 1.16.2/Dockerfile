@@ -1,4 +1,5 @@
 FROM fithwum/debian-base:bullseye
+LABEL maintainer "fithwum"
 
 ENV ACCEPT_EULA="false"
 ENV GAME_PORT=25565
