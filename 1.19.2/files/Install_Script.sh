@@ -5,8 +5,8 @@
 # Variables.
 echo " "
 echo "INFO ! Checking for latest Minecraft Server version."
-MC_VERSION_OLD=1.19.2
-MC_VERSION=1.19.3
+MC_VERSION_OLD=1.19.1
+MC_VERSION=1.19.2
 
 # Main install (Debian).
 # Check for files in /MCserver and download if needed.
@@ -22,7 +22,7 @@ if [ -e /MCserver/MCserver_${MC_VERSION}.jar ]
 			mkdir /MCserver/old-server-versions/${MC_VERSION_OLD}
 			mv /MCserver/MCserver_${MC_VERSION_OLD}.jar /MCserver/old-server-versions/${MC_VERSION_OLD}
 			mv /MCserver/run_${MC_VERSION_OLD}.sh /MCserver/old-server-versions/${MC_VERSION_OLD}
-			wget --no-cache https://piston-data.mojang.com/v1/objects/c9df48efed58511cdd0213c56b9013a7b5c9ac1f/server.jar -O /MCserver/MCserver_${MC_VERSION}.jar
+			wget --no-cache https://piston-data.mojang.com/v1/objects/f69c284232d7c7580bd89a5a4931c3581eae1378/server.jar -O /MCserver/MCserver_${MC_VERSION}.jar
 fi
 
 sleep 1
