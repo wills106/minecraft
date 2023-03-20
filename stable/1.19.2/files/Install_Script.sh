@@ -8,7 +8,7 @@ echo "INFO ! Checking for latest Minecraft Server version."
 MC_VERSION_OLD=1.19.1
 MC_VERSION=1.19.2
 MC_SERVER_FILE=https://piston-data.mojang.com/v1/objects/f69c284232d7c7580bd89a5a4931c3581eae1378/server.jar
-MC_RUN_FILE=https://raw.githubusercontent.com/fithwum/minecraft/master/${MC_VERSION}/files/run.sh
+MC_RUN_FILE=https://raw.githubusercontent.com/fithwum/minecraft/master/stable/${MC_VERSION}/files/run.sh
 
 # Main install (Debian).
 # Check for files in /MCserver and download if needed.

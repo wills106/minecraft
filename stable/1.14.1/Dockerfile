@@ -5,7 +5,7 @@ ENV ACCEPT_EULA="false"
 ENV GAME_PORT=25565
 
 # URL's for files
-ARG INSTALL_SCRIPT=https://raw.githubusercontent.com/fithwum/minecraft/master/1.14.1/files/Install_Script.sh
+ARG INSTALL_SCRIPT=https://raw.githubusercontent.com/fithwum/minecraft/master/stable/1.14.1/files/Install_Script.sh
 
 # Install java-17 & Dependencies.
 RUN apt-get -y update \
