@@ -7,6 +7,8 @@ echo " "
 echo "INFO ! Checking for latest Minecraft Server version."
 MC_VERSION_OLD=1.18.2
 MC_VERSION=1.19
+MC_SERVER_FILE=https://launcher.mojang.com/v1/objects/e00c4052dac1d59a1188b2aa9d5a87113aaf1122/server.jar
+MC_RUN_FILE=https://raw.githubusercontent.com/fithwum/minecraft/master/${MC_VERSION}/files/run.sh
 
 # Main install (Debian).
 # Check for files in /MCserver and download if needed.
@@ -22,7 +24,7 @@ if [ -e /MCserver/MCserver_${MC_VERSION}.jar ]
 			mkdir /MCserver/old-server-versions/${MC_VERSION_OLD}
 			mv /MCserver/MCserver_${MC_VERSION_OLD}.jar /MCserver/old-server-versions/${MC_VERSION_OLD}
 			mv /MCserver/run_${MC_VERSION_OLD}.sh /MCserver/old-server-versions/${MC_VERSION_OLD}
-			wget --no-cache https://launcher.mojang.com/v1/objects/e00c4052dac1d59a1188b2aa9d5a87113aaf1122/server.jar -O /MCserver/MCserver_${MC_VERSION}.jar
+			wget --no-cache ${MC_SERVER_FILE} -O /MCserver/MCserver_${MC_VERSION}.jar
 fi
 
 sleep 1
@@ -36,7 +38,7 @@ if [ -e /MCserver/run_${MC_VERSION}.sh ]
 		echo " "
 		echo "WARNING ! run_${MC_VERSION_OLD}.sh is out of date/missing ... will download now."
 		mv /MCserver/run_${MC_VERSION_OLD}.sh /MCserver/old-server-versions/${MC_VERSION_OLD}
-		wget --no-cache https://raw.githubusercontent.com/fithwum/minecraft/master/files/run.sh -O /MCserver/run_${MC_VERSION}.sh
+		wget --no-cache ${MC_RUN_FILE} -O /MCserver/run_${MC_VERSION}.sh
 fi
 
 sleep 1
