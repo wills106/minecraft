@@ -3,7 +3,7 @@
 # All rights reserved
 
 # Display setup
-export DISPLAY=:0
+export DISPLAY=localhost:0
 
 # Variables.
 echo " "
