@@ -4,6 +4,8 @@
 
 Xvfb :0.0 &
 export DISPLAY=:0.0
+x11vnc -forever -usepw -create &
+/bin/bash
 
 # Variables.
 echo " "
