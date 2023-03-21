@@ -3,7 +3,7 @@
 # All rights reserved
 
 # Display setup
-export DISPLAY=:99
+export DISPLAY=:0
 
 # Variables.
 echo " "
