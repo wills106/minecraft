@@ -8,7 +8,7 @@ echo "INFO ! Checking for latest Minecraft Server version."
 MC_VERSION_OLD=
 MC_VERSION=1.19.3
 MC_SERVER_FILE=https://maven.minecraftforge.net/net/minecraftforge/forge/1.19.3-44.1.0/forge-1.19.3-44.1.0-installer.jar
-MC_RUN_FILE=https://raw.githubusercontent.com/fithwum/minecraft/master/forge/${MC_VERSION}/files/run.sh
+MC_RUN_FILE=https://raw.githubusercontent.com/fithwum/minecraft/master/forge/forge-${MC_VERSION}/files/run.sh
 
 # Main install (Debian).
 # Check for files in /MCserver and download if needed.
