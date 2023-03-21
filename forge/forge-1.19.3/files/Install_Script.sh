@@ -5,7 +5,7 @@
 # Display setup
 Xvfb :99 &
 export DISPLAY=:99
-x11vnc -forever -usepw -create &
+x11vnc &
 /bin/bash
 
 # Variables.
