@@ -26,7 +26,6 @@ if [ -e /MCserver/server_forge-${MC_VERSION}.jar ]
 			wget --no-cache ${MC_SERVER_FILE} -O /MCserver/server_forge-${MC_VERSION}.jar
 			chmod +x /MCserver/server_forge-${MC_VERSION}.jar
 			./MCserver/server_forge-${MC_VERSION}.jar --installServer
-			
 fi
 
 sleep 1
