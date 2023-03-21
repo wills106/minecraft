@@ -3,7 +3,7 @@
 # All rights reserved
 
 Xvfb :0.0 &
-export DISPLAY=:0.0
+export DISPLAY=Debian:0.0
 
 # Variables.
 echo " "
