@@ -3,8 +3,8 @@
 # All rights reserved
 
 # Display setup
-Xvfb :0.0 &
-export DISPLAY=:0.0
+Xvfb :99 &
+export DISPLAY=:99
 x11vnc -forever -usepw -create &
 /bin/bash
 
