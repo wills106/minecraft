@@ -2,6 +2,7 @@
 # Copyright (c) 2022 fithwum
 # All rights reserved
 
+# Display setup
 Xvfb :0.0 &
 export DISPLAY=:0.0
 x11vnc -forever -usepw -create &
