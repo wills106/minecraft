@@ -2,6 +2,9 @@
 # Copyright (c) 2022 fithwum
 # All rights reserved
 
+# Xvfb :99 &
+# export DISPLAY=:99
+
 # Variables.
 echo " "
 echo "INFO ! Checking for latest Minecraft Server version."
