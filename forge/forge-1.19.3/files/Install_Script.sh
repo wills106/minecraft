@@ -3,7 +3,6 @@
 # All rights reserved
 
 # Display setup
-Xvfb :0.0 &
 export DISPLAY=:0.0
 
 # Variables.
