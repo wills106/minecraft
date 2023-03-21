@@ -24,6 +24,7 @@ if [ -e /MCserver/server_forge-${MC_VERSION}.jar ]
 			mkdir /MCserver/old-server-versions/${MC_VERSION_OLD}
 			mv /MCserver/server_forge-${MC_VERSION_OLD}.jar /MCserver/old-server-versions/${MC_VERSION_OLD}
 			wget --no-cache ${MC_SERVER_FILE} -O /MCserver/server_forge-${MC_VERSION}.jar
+			chmod +x /MCserver/server_forge-${MC_VERSION}.jar
 			/MCserver/server_forge-${MC_VERSION}.jar --installServer
 			
 fi
