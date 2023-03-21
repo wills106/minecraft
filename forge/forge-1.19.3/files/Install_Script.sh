@@ -5,8 +5,6 @@
 # Display setup
 Xvfb :99 &
 export DISPLAY=:99
-x11vnc &
-/bin/bash
 
 # Variables.
 echo " "
