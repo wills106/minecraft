@@ -6,23 +6,26 @@
 echo " "
 echo "INFO ! Checking for latest Minecraft Server version."
 MC_VERSION_OLD=
-MC_VERSION=forge-1.18.2
+MC_VERSION=1.18.2
+MC_SERVER_FILE=https://maven.minecraftforge.net/net/minecraftforge/forge/1.18.2-40.2.0/forge-1.18.2-40.2.0-installer.jar
+MC_RUN_FILE=https://raw.githubusercontent.com/fithwum/minecraft/master/forge/${MC_VERSION}/files/run.sh
 
 # Main install (Debian).
 # Check for files in /MCserver and download if needed.
-if [ -e /MCserver/forge-server_${MC_VERSION}.jar ]
+if [ -e /MCserver/server_forge-${MC_VERSION}.jar ]
 	then
 		echo " "
-		echo "INFO ! forge-server_${MC_VERSION}.jar found starting now."
+		echo "INFO ! server_forge-${MC_VERSION}.jar found starting now."
 	else
 		echo " "
-		echo "WARNING ! forge-server_${MC_VERSION}.jar is out of date/missing ... will download now."
+		echo "WARNING ! server_forge-${MC_VERSION}.jar is out of date/missing ... will download now."
 			echo " "
 			echo "INFO ! Cleaning old files."
 			mkdir /MCserver/old-server-versions/${MC_VERSION_OLD}
-			mv /MCserver/forge-server_${MC_VERSION_OLD}.jar /MCserver/old-server-versions/${MC_VERSION_OLD}
-			mv /MCserver/run_${MC_VERSION_OLD}.sh /MCserver/old-server-versions/${MC_VERSION_OLD}
-			wget --no-cache https://launcher.mojang.com/v1/objects/1b557e7b033b583cd9f66746b7a9ab1ec1673ced/server.jar -O /MCserver/forge-server_${MC_VERSION}.jar
+			mv /MCserver/server_forge-${MC_VERSION_OLD}.jar /MCserver/old-server-versions/${MC_VERSION_OLD}
+			wget --no-cache ${MC_SERVER_FILE} -O /MCserver/server_forge-${MC_VERSION}.jar
+			/MCserver/server_forge-${MC_VERSION}.jar --installServer
+			
 fi
 
 sleep 1
@@ -36,7 +39,7 @@ if [ -e /MCserver/run_${MC_VERSION}.sh ]
 		echo " "
 		echo "WARNING ! run_${MC_VERSION_OLD}.sh is out of date/missing ... will download now."
 		mv /MCserver/run_${MC_VERSION_OLD}.sh /MCserver/old-server-versions/${MC_VERSION_OLD}
-		wget --no-cache https://raw.githubusercontent.com/fithwum/minecraft/master/files/run.sh -O /MCserver/run_${MC_VERSION}.sh
+		wget --no-cache ${MC_RUN_FILE} -O /MCserver/run_${MC_VERSION}.sh
 fi
 
 sleep 1
@@ -88,7 +91,7 @@ sleep 1
 chown 99:100 -R /MCserver
 chmod 777 -R /MCserver
 chmod +x /MCserver/run_${MC_VERSION}.sh
-chmod +x /MCserver/forge-server_${MC_VERSION}.jar
+chmod +x /MCserver/server_forge-${MC_VERSION}.jar
 
 sleep 1
 
