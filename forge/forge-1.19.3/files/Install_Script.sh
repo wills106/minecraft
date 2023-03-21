@@ -2,8 +2,8 @@
 # Copyright (c) 2022 fithwum
 # All rights reserved
 
-Xvfb :99 &
-export DISPLAY=:99
+Xvfb :0.0 &
+export DISPLAY=:0.0
 
 # Variables.
 echo " "
