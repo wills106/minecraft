@@ -2,7 +2,7 @@
 # Copyright (c) 2022 fithwum
 # All rights reserved
 
-# Display setup github you suck
+# Display setup
 export DISPLAY=:99
 
 # Variables.
