@@ -17,7 +17,7 @@ WHITELIST_FILE=https://raw.githubusercontent.com/fithwum/minecraft/master/forge/
 # Main install (Debian).
 # Check for files in /MCserver and download if needed.
 # Looking for run-forge_${MC_VERSION}.sh
-if [ -e /MCserver/run.sh ]
+if [ -e /MCserver/run-forge_${MC_VERSION}.sh ]
 	then
 		echo " "
 		echo "INFO ! run-forge_${MC_VERSION}.sh found ... will use existing file."
