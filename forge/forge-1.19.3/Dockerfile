@@ -10,7 +10,7 @@ ARG INSTALL_SCRIPT=https://raw.githubusercontent.com/fithwum/minecraft/master/fo
 # Install java-17 & Dependencies.
 RUN apt-get -y update \
 	&& apt-get -y --fix-broken install \
-	&& apt-get install -y software-properties-common openjdk-17-jdk xvfb x11vnc  \
+	&& apt-get install -y software-properties-common unzip openjdk-17-jdk \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& update-ca-certificates -f;
