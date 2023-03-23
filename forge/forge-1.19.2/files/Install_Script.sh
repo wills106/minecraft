@@ -8,7 +8,7 @@ export DISPLAY=0
 # Variables.
 echo " "
 echo "INFO ! Checking for latest Minecraft Server version."
-MC_VERSION=1.19.3
+MC_VERSION=1.19.2
 
 EULA_FILE=https://raw.githubusercontent.com/fithwum/minecraft/master/forge/forge-${MC_VERSION}/files/eula.txt
 OPS_FILE=https://raw.githubusercontent.com/fithwum/minecraft/master/forge/forge-${MC_VERSION}/files/ops.json

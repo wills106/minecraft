@@ -3,10 +3,10 @@ LABEL maintainer "fithwum"
 
 ENV ACCEPT_EULA="false"
 ENV GAME_PORT=25565
-ENV FORGE_URL=https://maven.minecraftforge.net/net/minecraftforge/forge/1.19.3-44.1.0/forge-1.19.3-44.1.0-installer.jar
+ENV FORGE_URL=https://maven.minecraftforge.net/net/minecraftforge/forge/1.19.2-43.2.0/forge-1.19.2-43.2.0-installer.jar
 
 # URL's for files
-ARG INSTALL_SCRIPT=https://raw.githubusercontent.com/fithwum/minecraft/master/forge/forge-1.19.3/files/Install_Script.sh
+ARG INSTALL_SCRIPT=https://raw.githubusercontent.com/fithwum/minecraft/master/forge/forge-1.19.2/files/Install_Script.sh
 
 # Install java-17 & Dependencies.
 RUN apt-get -y update \
@@ -21,9 +21,9 @@ RUN mkdir -p /MCserver /MCtemp \
 	&& chmod 777 -R /MCserver /MCtemp \
 	&& chown 99:100 -R /MCserver /MCtemp \
 	&& cd /MCserver \
-	&& wget ${FORGE_URL} -O forge-1.19.3-44.1.0-installer.jar \
-	&& java -jar forge-1.19.3-44.1.0-installer.jar --installServer \
-	&& rm -frv forge-1.19.3-44.1.0-installer.jar forge-1.19.3-44.1.0-installer.jar.log
+	&& wget ${FORGE_URL} -O forge-1.19.2-43.2.0-installer.jar \
+	&& java -jar forge-1.19.2-43.2.0-installer.jar --installServer \
+	&& rm -frv forge-1.19.2-43.2.0-installer.jar forge-1.19.2-43.2.0-installer.jar.log
 
 ADD "${INSTALL_SCRIPT}" /MCtemp
 RUN chmod +x /MCtemp/Install_Script.sh
