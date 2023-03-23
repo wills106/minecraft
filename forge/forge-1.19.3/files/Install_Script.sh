@@ -109,6 +109,6 @@ sleep 1
 # Run Minecraft server.
 echo " "
 echo "INFO ! Starting Minecraft Server ${MC_VERSION}"
-# exec /MCserver/run_${MC_VERSION}.sh --dataPath=/MCserver
+exec /MCserver/run_${MC_VERSION}.sh --dataPath=/MCserver
 
 exit
