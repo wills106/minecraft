@@ -3,9 +3,10 @@
 # All rights reserved
 
 MC_VERSION=1.19.3
+FORGE_VERSION=44.1.0
 
 cd /MCserver
-JAR=./server_forge-${MC_VERSION}.jar
+JAR=./server_forge-${MC_VERSION}-${FORGE_VERSION}.jar
 
 while [ true ]; do
   java -Xmx4G -Xms1024M -Xmn1G -jar $JAR nogui
