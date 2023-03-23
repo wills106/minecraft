@@ -8,7 +8,7 @@ echo "INFO ! Checking for latest Minecraft Server version."
 MC_VERSION_OLD=1.10.1
 MC_VERSION=1.10.2
 MC_SERVER_FILE=https://launcher.mojang.com/v1/objects/3d501b23df53c548254f5e3f66492d178a48db63/server.jar
-MC_RUN_FILE=https://raw.githubusercontent.com/fithwum/minecraft/master/stable/${MC_VERSION}/files/run.sh
+MC_RUN_FILE=https://raw.githubusercontent.com/fithwum/minecraft/master/files/run-vanilla.sh
 
 # Main install (Debian).
 # Check for files in /MCserver and download if needed.
@@ -23,22 +23,21 @@ if [ -e /MCserver/MCserver_${MC_VERSION}.jar ]
 			echo "INFO ! Cleaning old files."
 			mkdir /MCserver/old-server-versions/${MC_VERSION_OLD}
 			mv /MCserver/MCserver_${MC_VERSION_OLD}.jar /MCserver/old-server-versions/${MC_VERSION_OLD}
-			mv /MCserver/run_${MC_VERSION_OLD}.sh /MCserver/old-server-versions/${MC_VERSION_OLD}
+			mv /MCserver/run-vanilla_${MC_VERSION_OLD}.sh /MCserver/old-server-versions/${MC_VERSION_OLD}
 			wget --no-cache ${MC_SERVER_FILE} -O /MCserver/MCserver_${MC_VERSION}.jar
 fi
 
 sleep 1
 
-# Looking for run_${MC_VERSION}.sh
-if [ -e /MCserver/run_${MC_VERSION}.sh ]
+# Looking for run-vanilla_${MC_VERSION}.sh
+if [ -e /MCserver/run-vanilla_${MC_VERSION}.sh ]
 	then
 		echo " "
-		echo "INFO ! run_${MC_VERSION}.sh found ... will use existing file."
+		echo "INFO ! run-vanilla_${MC_VERSION}.sh found ... will use existing file."
 	else
 		echo " "
-		echo "WARNING ! run_${MC_VERSION_OLD}.sh is out of date/missing ... will download now."
-		mv /MCserver/run_${MC_VERSION_OLD}.sh /MCserver/old-server-versions/${MC_VERSION_OLD}
-		wget --no-cache ${MC_RUN_FILE} -O /MCserver/run_${MC_VERSION}.sh
+		echo "WARNING ! run-vanilla_${MC_VERSION_OLD}.sh is out of date/missing ... will download now."
+		wget --no-cache ${MC_RUN_FILE} -O /MCserver/run-vanilla_${MC_VERSION}.sh
 fi
 
 sleep 1
@@ -71,7 +70,7 @@ if [ "${ACCEPT_EULA}" == "true" ]; then
 		echo " "
 		echo "INFO ! EULA accepted, server restarting, please wait..."
 		sleep 1
-		exec /MCserver/run_${MC_VERSION}.sh --dataPath=/MCserver
+		exec /MCserver/run-vanilla_${MC_VERSION}.sh --dataPath=/MCserver
 		exit 0
 	fi
 elif [ "${ACCEPT_EULA}" == "false" ]; then
@@ -89,7 +88,7 @@ sleep 1
 # Set permissions.
 chown 99:100 -R /MCserver
 chmod 777 -R /MCserver
-chmod +x /MCserver/run_${MC_VERSION}.sh
+chmod +x /MCserver/run-vanilla_${MC_VERSION}.sh
 chmod +x /MCserver/MCserver_${MC_VERSION}.jar
 
 sleep 1
@@ -97,6 +96,6 @@ sleep 1
 # Run Minecraft server.
 echo " "
 echo "INFO ! Starting Minecraft Server ${MC_VERSION}"
-exec /MCserver/run_${MC_VERSION}.sh --dataPath=/MCserver
+exec /MCserver/run-vanilla_${MC_VERSION}.sh --dataPath=/MCserver
 
 exit

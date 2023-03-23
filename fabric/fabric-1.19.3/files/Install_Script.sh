@@ -14,12 +14,11 @@ MC_VERSION=1.19.3
 FABRIC_VERSION=0.14.18
 
 SERVER_FILE=https://meta.fabricmc.net/v2/versions/loader/${MC_VERSION}/${FABRIC_VERSION}/0.11.2/server/jar
-MC_RUN_FILE=https://raw.githubusercontent.com/fithwum/minecraft/master/fabric/fabric-${MC_VERSION}/files/run.sh
+MC_RUN_FILE=https://raw.githubusercontent.com/fithwum/minecraft/master/files/run-fabric.sh
 
 EULA_FILE=https://raw.githubusercontent.com/fithwum/minecraft/master/fabric/fabric-${MC_VERSION}/files/eula.txt
 OPS_FILE=https://raw.githubusercontent.com/fithwum/minecraft/master/fabric/fabric-${MC_VERSION}/files/ops.json
 WHITELIST_FILE=https://raw.githubusercontent.com/fithwum/minecraft/master/fabric/fabric-${MC_VERSION}/files/whitelist.json
-SERVER_PROPERTIES=https://raw.githubusercontent.com/fithwum/minecraft/master/fabric/fabric-${MC_VERSION}/files/server.properties
 
 # Main install (Debian).
 # Check for files in /MCserver and download if needed.
@@ -39,16 +38,16 @@ fi
 
 sleep 1
 
-# Looking for run_${MC_VERSION}.sh
-if [ -e /MCserver/run_${MC_VERSION}.sh ]
+# Looking for run-fabric_${MC_VERSION}.sh
+if [ -e /MCserver/run-fabric_${MC_VERSION}.sh ]
 	then
 		echo " "
-		echo "INFO ! run_${MC_VERSION}.sh found ... will use existing file."
+		echo "INFO ! run-fabric_${MC_VERSION}.sh found ... will use existing file."
 	else
 		echo " "
-		echo "WARNING ! run_${MC_VERSION_OLD}.sh is out of date/missing ... will download now."
-		mv /MCserver/run_${MC_VERSION_OLD}.sh /MCserver/old-server-versions/${MC_VERSION_OLD}
-		wget --no-cache ${MC_RUN_FILE} -O /MCserver/run_${MC_VERSION}.sh
+		echo "WARNING ! run-fabric_${MC_VERSION_OLD}.sh is out of date/missing ... will download now."
+		mv /MCserver/run-fabric_${MC_VERSION_OLD}.sh /MCserver/old-server-versions/${MC_VERSION_OLD}
+		wget --no-cache ${MC_RUN_FILE} -O /MCserver/run-fabric_${MC_VERSION}.sh
 fi
 
 # Check for needed files
@@ -82,28 +81,18 @@ if [ -e /MCserver/whitelist.json ]
 		wget --no-cache ${WHITELIST_FILE} -O /MCserver/whitelist.json
 fi
 
-if [ -e /MCserver/server.properties ]
-	then
-		echo " "
-		echo "INFO ! server.properties found ... will use existing file."
-	else
-		echo " "
-		echo "WARNING ! server.properties is missing ... will download now."
-		wget --no-cache ${SERVER_PROPERTIES} -O /MCserver/server.properties
-fi
-
 sleep 1
 
 # Set permissions.
 chown 99:100 -R /MCserver
 chmod 777 -R /MCserver
-chmod +x /MCserver/run_${MC_VERSION}.sh
+chmod +x /MCserver/run-fabric_${MC_VERSION}.sh
 
 sleep 1
 
 # Run Minecraft server.
 echo " "
 echo "INFO ! Starting Minecraft Server ${MC_VERSION}"
-exec /MCserver/run_${MC_VERSION}.sh --dataPath=/MCserver
+exec /MCserver/run-fabric_${MC_VERSION}.sh --dataPath=/MCserver
 
 exit
