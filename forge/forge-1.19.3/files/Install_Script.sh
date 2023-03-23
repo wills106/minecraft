@@ -9,11 +9,11 @@ export DISPLAY=0
 echo " "
 echo "INFO ! Checking for latest Minecraft Server version."
 MC_VERSION_OLD=
-FORGE_VERSION_OLD=
+FABRIC_VERSION_OLD=
 MC_VERSION=1.19.3
-FORGE_VERSION=44.1.0
+FABRIC_VERSION=0.14.18
 
-MC_SERVER_FILE=https://nextcloud.fithwum.tech/s/Ay2DFBiNzRAxzjS/download/forge-${MC_VERSION}-${FORGE_VERSION}.zip
+SERVER_FILE=https://meta.fabricmc.net/v2/versions/loader/${MC_VERSION}/${FABRIC_VERSION}/0.11.2/server/jar
 MC_RUN_FILE=https://raw.githubusercontent.com/fithwum/minecraft/master/forge/forge-${MC_VERSION}/files/run.sh
 
 EULA_FILE=https://raw.githubusercontent.com/fithwum/minecraft/master/forge/forge-${MC_VERSION}/files/eula.txt
@@ -23,22 +23,33 @@ SERVER_PROPERTIES=https://raw.githubusercontent.com/fithwum/minecraft/master/for
 
 # Main install (Debian).
 # Check for files in /MCserver and download if needed.
-if [ -e /MCserver/forge-${MC_VERSION}-${FORGE_VERSION}.zip ]
+if [ -e /MCserver/forge-${MC_VERSION}-${FABRIC_VERSION}.zip ]
 	then
 		echo " "
-		echo "INFO ! forge-${MC_VERSION}-${FORGE_VERSION}.zip found starting now."
+		echo "INFO ! forge-${MC_VERSION}-${FABRIC_VERSION}.zip found starting now."
 	else
 		echo " "
-		echo "WARNING ! forge-${MC_VERSION}-${FORGE_VERSION}.zip is out of date/missing ... will download now."
+		echo "WARNING ! forge-${MC_VERSION}-${FABRIC_VERSION}.zip is out of date/missing ... will download now."
 			echo " "
 			echo "INFO ! Cleaning old files."
-			mkdir /MCserver/old-server-versions/${MC_VERSION_OLD}-${FORGE_VERSION_OLD}
-			mv /MCserver/forge-${MC_VERSION_OLD}-${FORGE_VERSION}.zip /MCserver/old-server-versions/${MC_VERSION_OLD}-${FORGE_VERSION_OLD}
-			wget --no-cache ${MC_SERVER_FILE} -O /MCserver/forge-${MC_VERSION}-${FORGE_VERSION}.zip
-			unzip /MCserver/forge-${MC_VERSION}-${FORGE_VERSION}.zip -d /MCserver
+			mkdir /MCserver/old-server-versions/${MC_VERSION_OLD}-${FABRIC_VERSION_OLD}
+			mv /MCserver/forge-${MC_VERSION_OLD}-${FABRIC_VERSION}.zip /MCserver/old-server-versions/${MC_VERSION_OLD}-${FABRIC_VERSION_OLD}
+			wget --no-cache ${SERVER_FILE} -O /MCserver/fabric-${MC_VERSION}-${FABRIC_VERSION}.jar
 fi
 
 sleep 1
+
+# Looking for run_${MC_VERSION}.sh
+if [ -e /MCserver/run_${MC_VERSION}.sh ]
+	then
+		echo " "
+		echo "INFO ! run_${MC_VERSION}.sh found ... will use existing file."
+	else
+		echo " "
+		echo "WARNING ! run_${MC_VERSION_OLD}.sh is out of date/missing ... will download now."
+		mv /MCserver/run_${MC_VERSION_OLD}.sh /MCserver/old-server-versions/${MC_VERSION_OLD}
+		wget --no-cache ${MC_RUN_FILE} -O /MCserver/run_${MC_VERSION}.sh
+fi
 
 # Check for needed files
 if [ -e /MCserver/eula.txt ]
@@ -86,13 +97,13 @@ sleep 1
 # Set permissions.
 chown 99:100 -R /MCserver
 chmod 777 -R /MCserver
-chmod +x /MCserver/run.sh
+chmod +x /MCserver/run_${MC_VERSION}.sh
 
 sleep 1
 
 # Run Minecraft server.
 echo " "
 echo "INFO ! Starting Minecraft Server ${MC_VERSION}"
-exec /MCserver/run.sh --dataPath=/MCserver
+exec /MCserver/run_${MC_VERSION}.sh --dataPath=/MCserver
 
 exit
