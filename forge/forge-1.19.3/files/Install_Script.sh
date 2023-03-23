@@ -9,8 +9,10 @@ export DISPLAY=0
 echo " "
 echo "INFO ! Checking for latest Minecraft Server version."
 MC_VERSION_OLD=
+FORGE_VERSION_OLD=
 MC_VERSION=1.19.3
-MC_SERVER_FILE=https://maven.minecraftforge.net/net/minecraftforge/forge/1.19.3-44.1.0/forge-1.19.3-44.1.0-installer.jar
+FORGE_VERSION=44.1.0
+MC_SERVER_FILE=https://maven.minecraftforge.net/net/minecraftforge/forge/${MC_VERSION}-${FORGE_VERSION}/forge-${MC_VERSION}-${FORGE_VERSION}-installer.jar
 MC_RUN_FILE=https://raw.githubusercontent.com/fithwum/minecraft/master/forge/forge-${MC_VERSION}/files/run.sh
 
 # Main install (Debian).
@@ -24,11 +26,11 @@ if [ -e /MCserver/server_forge-${MC_VERSION}.jar ]
 		echo "WARNING ! server_forge-${MC_VERSION}.jar is out of date/missing ... will download now."
 			echo " "
 			echo "INFO ! Cleaning old files."
-			mkdir /MCserver/old-server-versions/${MC_VERSION_OLD}
-			mv /MCserver/server_forge-${MC_VERSION_OLD}.jar /MCserver/old-server-versions/${MC_VERSION_OLD}
-			wget --no-cache ${MC_SERVER_FILE} -O /MCserver/server_forge-${MC_VERSION}.jar
-			chmod +x /MCserver/server_forge-${MC_VERSION}.jar
-			./MCserver/server_forge-${MC_VERSION}.jar --installServer
+			mkdir /MCserver/old-server-versions/${MC_VERSION_OLD}-${FORGE_VERSION_OLD}
+			mv /MCserver/server_forge-${MC_VERSION_OLD}-${FORGE_VERSION}.jar /MCserver/old-server-versions/${MC_VERSION_OLD}-${FORGE_VERSION_OLD}
+			wget --no-cache ${MC_SERVER_FILE} -O /MCserver/server_forge-${MC_VERSION}-${FORGE_VERSION}.jar
+			chmod +x /MCserver/server_forge-${MC_VERSION}-${FORGE_VERSION}.jar
+			./MCserver/server_forge-${MC_VERSION}-${FORGE_VERSION}.jar --installServer
 fi
 
 sleep 1
@@ -94,7 +96,7 @@ sleep 1
 chown 99:100 -R /MCserver
 chmod 777 -R /MCserver
 chmod +x /MCserver/run_${MC_VERSION}.sh
-chmod +x /MCserver/server_forge-${MC_VERSION}.jar
+chmod +x /MCserver/server_forge-${MC_VERSION}-${FORGE_VERSION}.jar
 
 sleep 1
 
