@@ -23,20 +23,20 @@ SERVER_PROPERTIES=https://raw.githubusercontent.com/fithwum/minecraft/master/for
 
 # Main install (Debian).
 # Check for files in /MCserver and download if needed.
-if [ -e /MCserver/server_forge-${MC_VERSION}.jar ]
+if [ -e /MCserver/forge-${MC_VERSION}-${FORGE_VERSION}.jar ]
 	then
 		echo " "
-		echo "INFO ! server_forge-${MC_VERSION}.jar found starting now."
+		echo "INFO ! forge-${MC_VERSION}-${FORGE_VERSION}.jar found starting now."
 	else
 		echo " "
-		echo "WARNING ! server_forge-${MC_VERSION}.jar is out of date/missing ... will download now."
+		echo "WARNING ! forge-${MC_VERSION}-${FORGE_VERSION}.jar is out of date/missing ... will download now."
 			echo " "
 			echo "INFO ! Cleaning old files."
 			mkdir /MCserver/old-server-versions/${MC_VERSION_OLD}-${FORGE_VERSION_OLD}
-			mv /MCserver/server_forge-${MC_VERSION_OLD}-${FORGE_VERSION}.jar /MCserver/old-server-versions/${MC_VERSION_OLD}-${FORGE_VERSION_OLD}
-			wget --no-cache ${MC_SERVER_FILE} -O /MCserver/server_forge-${MC_VERSION}-${FORGE_VERSION}.jar
-			# chmod +x /MCserver/server_forge-${MC_VERSION}-${FORGE_VERSION}.jar
-			# java -jar /MCserver/server_forge-${MC_VERSION}-${FORGE_VERSION}.jar --installServer > /MCserver
+			mv /MCserver/forge-${MC_VERSION_OLD}-${FORGE_VERSION}.jar /MCserver/old-server-versions/${MC_VERSION_OLD}-${FORGE_VERSION_OLD}
+			wget --no-cache ${MC_SERVER_FILE} -O /MCserver/forge-${MC_VERSION}-${FORGE_VERSION}.jar
+			chmod +x /MCserver/forge-${MC_VERSION}-${FORGE_VERSION}.jar
+			java -jar /MCserver/forge-${MC_VERSION}-${FORGE_VERSION}.jar --installServer > /MCserver
 fi
 
 sleep 1
@@ -56,7 +56,7 @@ fi
 sleep 1
 
 # Check for needed files
-if [ -e /MCserver/${EULA_FILE} ]
+if [ -e /MCserver/eula.txt ]
 	then
 		echo " "
 		echo "INFO ! eula.txt found ... will use existing file."
@@ -66,7 +66,7 @@ if [ -e /MCserver/${EULA_FILE} ]
 		wget --no-cache ${EULA_FILE} -O /MCserver/eula.txt
 fi
 
-if [ -e /MCserver/${OPS_FILE} ]
+if [ -e /MCserver/ops.json ]
 	then
 		echo " "
 		echo "INFO ! ops.json found ... will use existing file."
@@ -76,7 +76,7 @@ if [ -e /MCserver/${OPS_FILE} ]
 		wget --no-cache ${OPS_FILE} -O /MCserver/ops.json
 fi
 
-if [ -e /MCserver/${WHITELIST_FILE} ]
+if [ -e /MCserver/whitelist.json ]
 	then
 		echo " "
 		echo "INFO ! whitelist.json found ... will use existing file."
@@ -86,7 +86,7 @@ if [ -e /MCserver/${WHITELIST_FILE} ]
 		wget --no-cache ${WHITELIST_FILE} -O /MCserver/whitelist.json
 fi
 
-if [ -e /MCserver/${SERVER_PROPERTIES} ]
+if [ -e /MCserver/server.properties ]
 	then
 		echo " "
 		echo "INFO ! server.properties found ... will use existing file."
@@ -102,7 +102,6 @@ sleep 1
 chown 99:100 -R /MCserver
 chmod 777 -R /MCserver
 chmod +x /MCserver/run_${MC_VERSION}.sh
-chmod +x /MCserver/server_forge-${MC_VERSION}-${FORGE_VERSION}.jar
 
 sleep 1
 
