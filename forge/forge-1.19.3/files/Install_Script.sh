@@ -36,7 +36,7 @@ if [ -e /MCserver/forge-${MC_VERSION}-${FORGE_VERSION}.jar ]
 			mv /MCserver/forge-${MC_VERSION_OLD}-${FORGE_VERSION}.jar /MCserver/old-server-versions/${MC_VERSION_OLD}-${FORGE_VERSION_OLD}
 			wget --no-cache ${MC_SERVER_FILE} -O /MCserver/forge-${MC_VERSION}-${FORGE_VERSION}.jar
 			chmod +x /MCserver/forge-${MC_VERSION}-${FORGE_VERSION}.jar
-			java -jar /MCserver/forge-${MC_VERSION}-${FORGE_VERSION}.jar --installServer > /MCserver
+			java -jar /MCserver/forge-${MC_VERSION}-${FORGE_VERSION}.jar --installServer /MCserver
 fi
 
 sleep 1
