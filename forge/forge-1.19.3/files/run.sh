@@ -3,10 +3,10 @@
 # All rights reserved
 
 MC_VERSION=1.19.3
-FORGE_VERSION=44.1.0
+FABRIC_VERSION=0.14.18
 
 cd /MCserver
-JAR=./forge-${MC_VERSION}-${FORGE_VERSION}.jar
+JAR=./fabric-${MC_VERSION}-${FABRIC_VERSION}.jar
 
 while [ true ]; do
   java -Xmx4G -Xms1024M -Xmn1G -jar $JAR nogui
