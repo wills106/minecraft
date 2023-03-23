@@ -14,26 +14,26 @@ MC_VERSION=1.19.3
 FABRIC_VERSION=0.14.18
 
 SERVER_FILE=https://meta.fabricmc.net/v2/versions/loader/${MC_VERSION}/${FABRIC_VERSION}/0.11.2/server/jar
-MC_RUN_FILE=https://raw.githubusercontent.com/fithwum/minecraft/master/forge/forge-${MC_VERSION}/files/run.sh
+MC_RUN_FILE=https://raw.githubusercontent.com/fithwum/minecraft/master/fabric/fabric-${MC_VERSION}/files/run.sh
 
-EULA_FILE=https://raw.githubusercontent.com/fithwum/minecraft/master/forge/forge-${MC_VERSION}/files/eula.txt
-OPS_FILE=https://raw.githubusercontent.com/fithwum/minecraft/master/forge/forge-${MC_VERSION}/files/ops.json
-WHITELIST_FILE=https://raw.githubusercontent.com/fithwum/minecraft/master/forge/forge-${MC_VERSION}/files/whitelist.json
-SERVER_PROPERTIES=https://raw.githubusercontent.com/fithwum/minecraft/master/forge/forge-${MC_VERSION}/files/server.properties
+EULA_FILE=https://raw.githubusercontent.com/fithwum/minecraft/master/fabric/fabric-${MC_VERSION}/files/eula.txt
+OPS_FILE=https://raw.githubusercontent.com/fithwum/minecraft/master/fabric/fabric-${MC_VERSION}/files/ops.json
+WHITELIST_FILE=https://raw.githubusercontent.com/fithwum/minecraft/master/fabric/fabric-${MC_VERSION}/files/whitelist.json
+SERVER_PROPERTIES=https://raw.githubusercontent.com/fithwum/minecraft/master/fabric/fabric-${MC_VERSION}/files/server.properties
 
 # Main install (Debian).
 # Check for files in /MCserver and download if needed.
-if [ -e /MCserver/forge-${MC_VERSION}-${FABRIC_VERSION}.zip ]
+if [ -e /MCserver/fabric-${MC_VERSION}-${FABRIC_VERSION}.zip ]
 	then
 		echo " "
-		echo "INFO ! forge-${MC_VERSION}-${FABRIC_VERSION}.zip found starting now."
+		echo "INFO ! fabric-${MC_VERSION}-${FABRIC_VERSION}.zip found starting now."
 	else
 		echo " "
-		echo "WARNING ! forge-${MC_VERSION}-${FABRIC_VERSION}.zip is out of date/missing ... will download now."
+		echo "WARNING ! fabric-${MC_VERSION}-${FABRIC_VERSION}.zip is out of date/missing ... will download now."
 			echo " "
 			echo "INFO ! Cleaning old files."
 			mkdir /MCserver/old-server-versions/${MC_VERSION_OLD}-${FABRIC_VERSION_OLD}
-			mv /MCserver/forge-${MC_VERSION_OLD}-${FABRIC_VERSION}.zip /MCserver/old-server-versions/${MC_VERSION_OLD}-${FABRIC_VERSION_OLD}
+			mv /MCserver/fabric-${MC_VERSION_OLD}-${FABRIC_VERSION}.zip /MCserver/old-server-versions/${MC_VERSION_OLD}-${FABRIC_VERSION_OLD}
 			wget --no-cache ${SERVER_FILE} -O /MCserver/fabric-${MC_VERSION}-${FABRIC_VERSION}.jar
 fi
 
