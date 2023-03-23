@@ -40,20 +40,6 @@ fi
 
 sleep 1
 
-# Looking for run_${MC_VERSION}.sh
-if [ -e /MCserver/run_${MC_VERSION}.sh ]
-	then
-		echo " "
-		echo "INFO ! run_${MC_VERSION}.sh found ... will use existing file."
-	else
-		echo " "
-		echo "WARNING ! run_${MC_VERSION_OLD}.sh is out of date/missing ... will download now."
-		mv /MCserver/run_${MC_VERSION_OLD}.sh /MCserver/old-server-versions/${MC_VERSION_OLD}
-		wget --no-cache ${MC_RUN_FILE} -O /MCserver/run_${MC_VERSION}.sh
-fi
-
-sleep 1
-
 # Check for needed files
 if [ -e /MCserver/eula.txt ]
 	then
