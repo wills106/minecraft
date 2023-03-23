@@ -12,6 +12,7 @@ MC_VERSION_OLD=
 FORGE_VERSION_OLD=
 MC_VERSION=1.19.3
 FORGE_VERSION=44.1.0
+
 MC_SERVER_FILE=https://maven.minecraftforge.net/net/minecraftforge/forge/${MC_VERSION}-${FORGE_VERSION}/forge-${MC_VERSION}-${FORGE_VERSION}-installer.jar
 MC_RUN_FILE=https://raw.githubusercontent.com/fithwum/minecraft/master/forge/forge-${MC_VERSION}/files/run.sh
 
@@ -36,7 +37,6 @@ if [ -e /MCserver/server_forge-${MC_VERSION}.jar ]
 			wget --no-cache ${MC_SERVER_FILE} -O /MCserver/server_forge-${MC_VERSION}-${FORGE_VERSION}.jar
 			# chmod +x /MCserver/server_forge-${MC_VERSION}-${FORGE_VERSION}.jar
 			# java -jar /MCserver/server_forge-${MC_VERSION}-${FORGE_VERSION}.jar --installServer > /MCserver
-			# ./MCserver/server_forge-${MC_VERSION}-${FORGE_VERSION}.jar --installServer
 fi
 
 sleep 1
