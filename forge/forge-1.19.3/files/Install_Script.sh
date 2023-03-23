@@ -13,7 +13,7 @@ FORGE_VERSION_OLD=
 MC_VERSION=1.19.3
 FORGE_VERSION=44.1.0
 
-MC_SERVER_FILE=https://maven.minecraftforge.net/net/minecraftforge/forge/${MC_VERSION}-${FORGE_VERSION}/forge-${MC_VERSION}-${FORGE_VERSION}-installer.jar
+MC_SERVER_FILE=https://nextcloud.fithwum.tech/s/Ay2DFBiNzRAxzjS/download/forge-${MC_VERSION}-${FORGE_VERSION}.zip
 MC_RUN_FILE=https://raw.githubusercontent.com/fithwum/minecraft/master/forge/forge-${MC_VERSION}/files/run.sh
 
 EULA_FILE=https://raw.githubusercontent.com/fithwum/minecraft/master/forge/forge-${MC_VERSION}/files/eula.txt
@@ -23,20 +23,19 @@ SERVER_PROPERTIES=https://raw.githubusercontent.com/fithwum/minecraft/master/for
 
 # Main install (Debian).
 # Check for files in /MCserver and download if needed.
-if [ -e /MCserver/forge-${MC_VERSION}-${FORGE_VERSION}.jar ]
+if [ -e /MCserver/forge-${MC_VERSION}-${FORGE_VERSION}.zip ]
 	then
 		echo " "
-		echo "INFO ! forge-${MC_VERSION}-${FORGE_VERSION}.jar found starting now."
+		echo "INFO ! forge-${MC_VERSION}-${FORGE_VERSION}.zip found starting now."
 	else
 		echo " "
-		echo "WARNING ! forge-${MC_VERSION}-${FORGE_VERSION}.jar is out of date/missing ... will download now."
+		echo "WARNING ! forge-${MC_VERSION}-${FORGE_VERSION}.zip is out of date/missing ... will download now."
 			echo " "
 			echo "INFO ! Cleaning old files."
 			mkdir /MCserver/old-server-versions/${MC_VERSION_OLD}-${FORGE_VERSION_OLD}
-			mv /MCserver/forge-${MC_VERSION_OLD}-${FORGE_VERSION}.jar /MCserver/old-server-versions/${MC_VERSION_OLD}-${FORGE_VERSION_OLD}
-			wget --no-cache ${MC_SERVER_FILE} -O /MCserver/forge-${MC_VERSION}-${FORGE_VERSION}.jar
-			chmod +x /MCserver/forge-${MC_VERSION}-${FORGE_VERSION}.jar
-			java -jar /MCserver/forge-${MC_VERSION}-${FORGE_VERSION}.jar --installServer /MCserver
+			mv /MCserver/forge-${MC_VERSION_OLD}-${FORGE_VERSION}.zip /MCserver/old-server-versions/${MC_VERSION_OLD}-${FORGE_VERSION_OLD}
+			wget --no-cache ${MC_SERVER_FILE} -O /MCserver/forge-${MC_VERSION}-${FORGE_VERSION}.zip
+			unzip /MCserver/forge-${MC_VERSION}-${FORGE_VERSION}.zip /MCserver
 fi
 
 sleep 1
@@ -101,13 +100,13 @@ sleep 1
 # Set permissions.
 chown 99:100 -R /MCserver
 chmod 777 -R /MCserver
-chmod +x /MCserver/run_${MC_VERSION}.sh
+chmod +x /MCserver/run.sh
 
 sleep 1
 
 # Run Minecraft server.
 echo " "
 echo "INFO ! Starting Minecraft Server ${MC_VERSION}"
-exec /MCserver/run_${MC_VERSION}.sh --dataPath=/MCserver
+exec /MCserver/run.sh --dataPath=/MCserver
 
 exit
