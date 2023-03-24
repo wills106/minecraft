@@ -22,17 +22,17 @@ WHITELIST_FILE=https://raw.githubusercontent.com/fithwum/minecraft/master/fabric
 
 # Main install (Debian).
 # Check for files in /MCserver and download if needed.
-if [ -e /MCserver/fabric-${MC_VERSION}-${FABRIC_VERSION}.zip ]
+if [ -e /MCserver/fabric-${MC_VERSION}-${FABRIC_VERSION}.jar ]
 	then
 		echo " "
-		echo "INFO ! fabric-${MC_VERSION}-${FABRIC_VERSION}.zip found starting now."
+		echo "INFO ! fabric-${MC_VERSION}-${FABRIC_VERSION}.jar found starting now."
 	else
 		echo " "
-		echo "WARNING ! fabric-${MC_VERSION}-${FABRIC_VERSION}.zip is out of date/missing ... will download now."
+		echo "WARNING ! fabric-${MC_VERSION}-${FABRIC_VERSION}.jar is out of date/missing ... will download now."
 			echo " "
 			echo "INFO ! Cleaning old files."
 			mkdir /MCserver/old-server-versions/${MC_VERSION_OLD}-${FABRIC_VERSION_OLD}
-			mv /MCserver/fabric-${MC_VERSION_OLD}-${FABRIC_VERSION}.zip /MCserver/old-server-versions/${MC_VERSION_OLD}-${FABRIC_VERSION_OLD}
+			mv /MCserver/fabric-${MC_VERSION_OLD}-${FABRIC_VERSION}.jar /MCserver/old-server-versions/${MC_VERSION_OLD}-${FABRIC_VERSION_OLD}
 			wget --no-cache ${SERVER_FILE} -O /MCserver/fabric-${MC_VERSION}-${FABRIC_VERSION}.jar
 fi
 
