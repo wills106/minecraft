@@ -1,0 +1,14 @@
+[
+  {
+    "uuid": "e9191443-8706-461c-a4a9-6b12b86f7fc0",
+    "name": "fithwum",
+    "level": 4,
+    "bypassesPlayerLimit": true
+  },
+  {
+    "uuid": "fb505f65-bfb5-45f7-8e16-16ce5ef09eb2",
+    "name": "Lacarthian",
+    "level": 4,
+    "bypassesPlayerLimit": true
+  }
+]
