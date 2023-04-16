@@ -32,7 +32,8 @@ if [ -e /MCserver/fabric-${MC_VERSION}-${FABRIC_VERSION}.jar ]
 			echo " "
 			echo "INFO ! Cleaning old files."
 			mkdir /MCserver/old-server-versions/${MC_VERSION_OLD}-${FABRIC_VERSION_OLD}
-			mv /MCserver/fabric-${MC_VERSION_OLD}-${FABRIC_VERSION_OLD}.jar /MCserver/old-server-versions/${MC_VERSION_OLD}-${FABRIC_VERSION_OLD}
+			mv /MCserver/fabric-${MC_VERSION_OLD}-*.jar /MCserver/old-server-versions/${MC_VERSION_OLD}-${FABRIC_VERSION_OLD}
+			mv /MCserver/fabric-*-${FABRIC_VERSION_OLD}.jar /MCserver/old-server-versions/${MC_VERSION_OLD}-${FABRIC_VERSION_OLD}
 			wget --no-cache ${SERVER_FILE} -O /MCserver/fabric-${MC_VERSION}-${FABRIC_VERSION}.jar
 fi
 
