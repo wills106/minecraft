@@ -11,7 +11,7 @@ echo "INFO ! Checking for latest Minecraft Server version."
 MC_VERSION_OLD=
 FABRIC_VERSION_OLD=
 MC_VERSION=1.19.3
-FABRIC_VERSION=0.14.18
+FABRIC_VERSION=0.14.19
 
 SERVER_FILE=https://meta.fabricmc.net/v2/versions/loader/${MC_VERSION}/${FABRIC_VERSION}/0.11.2/server/jar
 MC_RUN_FILE=https://raw.githubusercontent.com/fithwum/minecraft/master/files/run-fabric.sh
