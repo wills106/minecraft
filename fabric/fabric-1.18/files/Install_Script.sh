@@ -12,8 +12,9 @@ MC_VERSION_OLD=
 FABRIC_VERSION_OLD=1.14.18
 MC_VERSION=1.18
 FABRIC_VERSION=0.14.19
+INSTALLER_VERSION=0.11.2
 
-SERVER_FILE=https://meta.fabricmc.net/v2/versions/loader/${MC_VERSION}/${FABRIC_VERSION}/0.11.2/server/jar
+SERVER_FILE=https://meta.fabricmc.net/v2/versions/loader/${MC_VERSION}/${FABRIC_VERSION}/${INSTALLER_VERSION}/server/jar
 MC_RUN_FILE=https://raw.githubusercontent.com/fithwum/minecraft/master/files/run-fabric.sh
 
 EULA_FILE=https://raw.githubusercontent.com/fithwum/minecraft/master/fabric/fabric-${MC_VERSION}/files/eula.txt
