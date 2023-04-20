@@ -32,9 +32,9 @@ if [ -e /MCserver/fabric-${MC_VERSION}-${FABRIC_VERSION}.jar ]
 		echo "WARNING ! fabric-${MC_VERSION}-${FABRIC_VERSION}.jar is out of date/missing ... will download now."
 			echo " "
 			echo "INFO ! Cleaning old files."
-			mkdir /MCserver/old-server-versions/${MC_VERSION_OLD}-${FABRIC_VERSION_OLD}
-			mv /MCserver/fabric-${MC_VERSION_OLD}-*.jar /MCserver/old-server-versions/${MC_VERSION_OLD}-${FABRIC_VERSION_OLD}
-			mv /MCserver/fabric-*-${FABRIC_VERSION_OLD}.jar /MCserver/old-server-versions/${MC_VERSION_OLD}-${FABRIC_VERSION_OLD}
+			mkdir /MCserver/old-server-versions
+			mv /MCserver/fabric-${MC_VERSION_OLD}-${FABRIC_VERSION}.jar /MCserver/old-server-versions/
+			mv /MCserver/fabric-${MC_VERSION}-${FABRIC_VERSION_OLD}.jar /MCserver/old-server-versions/
 			wget --no-cache ${SERVER_FILE} -O /MCserver/fabric-${MC_VERSION}-${FABRIC_VERSION}.jar
 fi
 
