@@ -48,7 +48,7 @@ if [ -e /MCserver/run-fabric_${MC_VERSION}.sh ]
 	else
 		echo " "
 		echo "WARNING ! run-fabric_${MC_VERSION_OLD}.sh is out of date/missing ... will download now."
-		mv /MCserver/run-fabric_${MC_VERSION_OLD}.sh /MCserver/old-server-versions/${MC_VERSION_OLD}
+		mv /MCserver/run-fabric_${MC_VERSION_OLD}.sh /MCserver/old-server-versions/
 		wget --no-cache ${MC_RUN_FILE} -O /MCserver/run-fabric_${MC_VERSION}.sh
 fi
 
